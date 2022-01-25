@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "",
+    "test": "jest --verbose",
     "build": "webpack",
     "dev": "webpack serve --open & nodemon server/server.js",
     "start": "nodemon server/server.js"
@@ -24,9 +24,11 @@
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "@testing-library/react": "^12.1.2",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.4.7",
     "style-loader": "^3.3.1",
     "webpack": "^5.67.0",
     "webpack-cli": "^4.9.2",
