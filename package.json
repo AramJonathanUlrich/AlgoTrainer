@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest",
     "build": "webpack",
     "dev": "webpack serve --open & nodemon server/server.js",
     "start": "nodemon server/server.js"
@@ -20,6 +20,9 @@
     "url": "https://github.com/AramJonathanUlrich/vigilant-invention/issues"
   },
   "homepage": "https://github.com/AramJonathanUlrich/vigilant-invention#readme",
+  "jest": {
+    "testEnvironment": "jest-environment-jsdom"
+  },
   "devDependencies": {
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
