@@ -7,10 +7,10 @@ import FlashcardContainer from './Components/FlashcardContainer.jsx';
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Login />}>
-        <Route path="mainpage" element={<FlashcardContainer />} />
-      </Route>
+      <Route path="/" element={<Login />}/>
+      <Route path="mainpage" element={<FlashcardContainer />} />
     </Routes>
+    // <Login />
   );
 };
 

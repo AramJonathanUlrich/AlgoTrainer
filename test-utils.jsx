@@ -1,12 +1,13 @@
 import React from 'react'
 import {render} from '@testing-library/react'
+import { BrowserRouter } from 'react-router';
 
-// // create a helper function that wraps around render
-// const renderWithRouter = (ui, {route = '/'} = {}) => {
-//   window.history.pushState({}, 'Test page', route)
+// create a helper function that wraps around render
+export const renderWithRouter = (ui, {route = '/'} = {}) => {
+  window.history.pushState({}, 'Test page', route)
 
-//   return render(ui, {wrapper: BrowserRouter})
-// }
+  return render(ui, {wrapper: BrowserRouter})
+}
 
 // // define a custom render method that includes things like global context providers, data stores, etc. 
 // // To make this available globally, one approach is to define a utility file that re-exports everything from React Testing Library. 

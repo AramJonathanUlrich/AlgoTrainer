@@ -9,7 +9,7 @@ const Login = () => {
     //   </nav>
     // </div>
     <div className="login" style={{ textAlign: 'center' }}>
-      <form action="/mainpage">
+      <form action="/mainpage" name="loginform">
         <label for="username">Username:</label>
         <br />
         <input type="text" id="username" name="username"></input>
