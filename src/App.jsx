@@ -1,8 +1,17 @@
+import * as React from 'react';
+// import FlashcardContainer from "./Components/FlashcardContainer.jsx";
+import Login from './Components/Login.jsx';
+import { Routes, Route, Link } from 'react-router-dom';
+import FlashcardContainer from './Components/FlashcardContainer.jsx';
+
 const App = () => {
   return (
-    <div className="App">
-      <h1 style={{ textAlign: 'center' }}>Algo Flashcards</h1>
-      <FlashcardContainer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />}>
+        <Route path="mainpage" element={<FlashcardContainer />} />
+      </Route>
+    </Routes>
   );
 };
+
+export default App;

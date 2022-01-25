@@ -1,3 +1,5 @@
+import * as React from "react";
+
 const FlashcardContainer = () => {
   return (
     <div className="flashcard-container">
