@@ -23,12 +23,15 @@ const MainPage = () => {
           className="form-container"
           id="form-container"
           onSubmit={(e) => {
-            let data = new FormData(document.getElementById('form-container'));
-            console.log(data);
             fetch('/create', {
               method: 'POST',
-              body: new FormData(document.getElementById('form-container')),
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: JSON.stringify({
+                algoName: document.getElementById('algoName').value,
+                algoPromp: document.getElementById('algoPrompt').value,
+                algoExample: document.getElementById('algoExample').value,
+                algoType: document.getElementById('algoType').value,
+              }),
+              headers: { 'Content-Type': 'application/json' },
             })
               .then((res) => res.json())
               .then((data) => console.log(data))
