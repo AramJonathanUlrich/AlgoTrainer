@@ -5,22 +5,19 @@
 // });
 
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import App from '../src/App';
-import { renderWithRouter } from '../test-utils';
 
 describe('App & React Router Integration Testing', () => {
   test('full app rendering/navigating', () => {
-    expect(true).toBe(true);
-    // renderWithRouter(<App />)
-    // expect(screen.getByRole('form')).toBeInTheDocument()
+    render(<App />)
+    expect(screen.getByRole('form')).toBeInTheDocument()
 
-    // const leftClick = {button: 0}
-    // userEvent.click(screen.getByText(/about/i), leftClick)
+    userEvent.click(screen.getByRole('button'));
 
-    // expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
+    expect(screen.getByRole('form')).toBeInTheDocument()
   })
 
   // // serves an error no match page

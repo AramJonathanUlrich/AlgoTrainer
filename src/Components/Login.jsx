@@ -11,24 +11,15 @@ const Login = () => {
   };
 
   return (
-    <div style={{textAlign: 'center'}}>
-      <h2>Welcome to the app</h2>
-      <h3>Login below to continue</h3>
-      <div className="login">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="username">Username:</label>
-          <br />
-          <input type="text" id="username" name="username"></input>
-          <br />
-          <label htmlFor="password">Password:</label>
-          <br />
-          <input type="text" id="password" name="password"></input>
-          <br />
-          <br />
-          <input type="submit" value="Submit"></input>
+    <div className="login">
+      <h1>Login</h1>
+        <form name="login-form" onSubmit={handleSubmit}>
+          <input type="text" id="username" name="username" placeholder="Username" />
+          <input type="password" name="password" placeholder="Password" />
+          <button type="submit" className="btn btn-primary btn-block btn-large">Let me in.</button>
         </form>
-      </div>
     </div>
+
   )
 }
 
