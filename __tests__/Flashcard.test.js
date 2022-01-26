@@ -54,7 +54,7 @@ describe('Flashcard', () => {
     const onClick = jest.fn();
     render(<Flashcard algoCard={algoCard} deleteCard={onClick}/>)
 
-    userEvent.click(screen.getByText('X'));
+    await userEvent.click(screen.getByText('X'));
     expect(screen.getByText('X')).toBeInTheDocument();
     // ...
     // Wait until the callback does not throw an error. In this case, that means
