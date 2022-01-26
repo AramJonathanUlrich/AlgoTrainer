@@ -2,17 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Flashcard from './Flashcard.jsx';
 
 const FlashcardContainer = () => {
-  const [algoCards, setAlgoCards] = useState([
-    {
-      algoName: 'Two-Sum',
-      algoPrompt: `Given an array of integers, return indices of the two numbers such that they add up to a specific target. 
-    You may assume that each input would have exactly one solution, and you may not use the same element twice.`,
-      algoExample: `Given nums = [2, 7, 11, 15], target = 9,
-    Because nums[0] + nums[1] = 2 + 7 = 9,
-    return [0, 1].`,
-      algoType: 'easy',
-    },
-  ]);
+  const [algoCards, setAlgoCards] = useState([]);
 
   useEffect(() => {
     fetch('/flashcards')
@@ -22,9 +12,30 @@ const FlashcardContainer = () => {
       });
   });
 
+  const deleteCard = (e) => {
+    const id = e.target.name;
+    const stateArray = algoCards;
+    const removedElem = stateArray.splice(Number(id), 1);
+    setAlgoCards(stateArray);
+    fetch('/delete/' + removedElem[0].algoName, {
+    method: "DELETE",
+    })
+    .then((data) => console.log(data))
+    .catch((err) => console.log('there was an error: ', err));
+  }
+
+  const updateCard = (e) => {
+    const id = e.target.name;
+    fetch('/update/' + algoCards[Number(id)].algoName, {
+    method: "PATCH",
+    })
+    .then((data) => console.log(data))
+    .catch((err) => console.log('there was an error: ', err));
+  }
+
   const flashcards = [];
   for (let i = 0; i < algoCards.length; i += 1) {
-    flashcards.push(<Flashcard key={i} name={i} algoCard={algoCards[i]} />);
+    flashcards.push(<Flashcard key={i} name={i} algoCard={algoCards[i]} deleteCard={deleteCard}/>);
   }
 
   return (

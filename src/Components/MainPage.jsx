@@ -1,85 +1,103 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import FlashcardContainer from './FlashcardContainer.jsx';
-import '../styles/style.css';
 
 const MainPage = () => {
-  let navigate = useNavigate();
-
-  const openForm = () => {
-    document.getElementById('myForm').style.display = 'block';
-  };
+  const openForm = () => {};
 
   const closeForm = () => {
     document.getElementById('myForm').style.display = 'none';
   };
 
+  const onSubmitClick = (e) => {
+    fetch('/create', {
+      method: 'POST',
+      body: JSON.stringify({
+        algoName: document.getElementById('algoName').value,
+        algoPrompt: document.getElementById('algoPrompt').value,
+        algoEx: document.getElementById('algoExample').value,
+        algoType: document.getElementById('algoType').value,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((data) => console.log(data))
+      .catch((err) => console.log('error from fetch', err));
+    e.preventDefault();
+  };
+
   return (
-    <div>
-      <h1>Welcome (insert user's name here)</h1>
-      <div className="form-popup" id="myForm">
-        <form
-          className="form-container"
-          id="form-container"
-          onSubmit={(e) => {
-            let data = new FormData(document.getElementById('form-container'));
-            console.log(data);
-            fetch('/create', {
-              method: 'POST',
-              body: new FormData(document.getElementById('form-container')),
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            })
-              .then((res) => res.json())
-              .then((data) => console.log(data))
-              .catch((err) => console.log(err));
-            e.preventDefault();
-          }}
-        >
-          <h1>Create flashcard</h1>
-          <label htmlFor="algoName">
-            <b>Algorithm Name</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Algorithm Name"
-            name="algoName"
-          />
-          <label htmlFor="algoPrompt">
-            <b>Algorithm Prompt</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Algorithm Prompt"
-            name="algoPrompt"
-          />
-          <label htmlFor="algoExample">
-            <b>Algorithm Example</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Algorithm Example"
-            name="algoExample"
-          />
-          <label htmlFor="algoType">
-            <b>Algorithm Type</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Algorithm Type"
-            name="algoType"
-          />
-          <button type="submit" className="btn">
-            Create
-          </button>
-          <button type="reset" className="btn_cancel" onClick={closeForm}>
-            Discard
-          </button>
-        </form>
+    <div className="header">
+      <h1 className="main">Time to Study ALGOS</h1>
+      <div className="modal" id="create">
+        <div className="modal-content">
+          <a href="#close" className="close-link">
+            X
+          </a>
+          <form
+            className="form-container"
+            id="form-container"
+            onSubmit={onSubmitClick}
+          >
+            <h1>Create flashcard</h1>
+            <label htmlFor="algoName">
+              <b>Algorithm Name</b>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Algorithm Name"
+              name="algoName"
+              id="algoName"
+            />
+            <label htmlFor="algoPrompt">
+              <b>Algorithm Prompt</b>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Algorithm Prompt"
+              name="algoPrompt"
+              id="algoPrompt"
+            />
+            <label htmlFor="algoExample">
+              <b>Algorithm Example</b>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Algorithm Example"
+              name="algoExample"
+              id="algoExample"
+            />
+            <label htmlFor="algoType">
+              <b>Algorithm Type</b>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Algorithm Type"
+              name="algoType"
+              id="algoType"
+            />
+            <button type="reset" className="btn btn-cancel popup-btn">
+              Reset
+            </button>
+            <button type="submit" className="btn btn-primary popup-btn">
+              Create
+            </button>
+          </form>
+        </div>
+        <a href="#close" className="background"></a>
       </div>
-      <button type="button" onClick={openForm}>
+      <a className="btn btn-primary btn-large" href="#create">
         Create a new flashcard
-      </button>
+      </a>
+      {/* <button
+        className="btn btn-primary btn-large"
+        href="#create"
+        type="button"
+        onClick={openForm}
+      >
+        Create a new flashcard
+      </button> */}
+      <br />
+      <br />
       <FlashcardContainer />
     </div>
   );
