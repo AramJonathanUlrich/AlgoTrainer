@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const path = require('path');
+const flashcardController = require('./flashcardController.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -12,11 +13,18 @@ app.get('/', (req, res) => {
 
 app.use('/', express.static(path.join(__dirname, '../src')));
 
-app.post('/create', (req, res) => {
-  res.locals.data = req.body;
-  res.locals.test = { location: '/test' };
-  res.status(200).json({ location: res.locals.test, data: res.locals.data });
+app.post('/create', flashcardController.addFlashcard, (req, res) => {
+  res.sendStatus(200);
 });
+
+app.post('/login', flashcardController.verifyUser, (req, res) => {
+  if(res.locals.data) {
+    res.locals.login = true;
+  }else {
+    res.locals.login = false;
+  }
+    res.status(200).json(res.locals.login);
+  });
 
 app.get('/flashcards', (req, res) => {
   res.status(200).json([

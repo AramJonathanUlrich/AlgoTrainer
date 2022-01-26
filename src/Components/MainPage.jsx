@@ -14,15 +14,14 @@ const MainPage = () => {
       method: 'POST',
       body: JSON.stringify({
         algoName: document.getElementById('algoName').value,
-        algoPromp: document.getElementById('algoPrompt').value,
-        algoExample: document.getElementById('algoExample').value,
+        algoPrompt: document.getElementById('algoPrompt').value,
+        algoEx: document.getElementById('algoExample').value,
         algoType: document.getElementById('algoType').value,
       }),
       headers: { 'Content-Type': 'application/json' },
     })
-      .then((res) => res.json())
       .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log('error from fetch', err));
     e.preventDefault();
   };
 
