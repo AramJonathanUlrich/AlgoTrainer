@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest --verbose",
     "build": "webpack",
-    "dev": "webpack serve --open & nodemon server/server.js",
-    "start": "nodemon server/server.js"
+    "dev": "webpack serve --open & nodemon server/start.js",
+    "start": "nodemon server/start.js"
   },
   "repository": {
     "type": "git",

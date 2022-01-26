@@ -1,5 +1,6 @@
 const request = require("supertest");
-const server = "http://localhost:3000";
+// const server = "http://localhost:3000";
+const server = require('../server/server');
 
 /**
  * Read the docs! https://www.npmjs.com/package/supertest
