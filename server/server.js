@@ -13,8 +13,9 @@ app.get('/', (req, res) => {
 app.use('/', express.static(path.join(__dirname, '../src')));
 
 app.post('/create', (req, res) => {
-  res.locals.test = {location: '/test'}
-  res.status(200).json(res.locals.test)
+  res.locals.data = req.body;
+  res.locals.test = { location: '/test' };
+  res.status(200).json({ location: res.locals.test, data: res.locals.data });
 });
 
 app.get('/flashcards', (req, res) => {
