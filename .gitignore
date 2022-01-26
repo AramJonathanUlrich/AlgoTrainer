@@ -1,2 +1,4 @@
 node_modules
-.env
+.ENV
+.DS_Store
+Flashcards DB Server
