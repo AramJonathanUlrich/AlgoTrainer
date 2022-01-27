@@ -27,7 +27,7 @@ const MainPage = () => {
 
   return (
     <div className="header">
-      <h1 className="main">Time to Study ALGOS</h1>
+      <h1 className="main">Time to Study ALGOS!</h1>
       <div className="modal" id="create">
         <div className="modal-content">
           <a href="#close" className="close-link">
@@ -40,7 +40,7 @@ const MainPage = () => {
           >
             <h1>Create flashcard</h1>
             <label htmlFor="algoName">
-              <b>Algorithm Name</b>
+              <b>Name</b>
             </label>
             <input
               type="text"
@@ -49,7 +49,7 @@ const MainPage = () => {
               id="algoName"
             />
             <label htmlFor="algoPrompt">
-              <b>Algorithm Prompt</b>
+              <b>Prompt</b>
             </label>
             <input
               type="text"
@@ -58,7 +58,7 @@ const MainPage = () => {
               id="algoPrompt"
             />
             <label htmlFor="algoExample">
-              <b>Algorithm Example</b>
+              <b>Example</b>
             </label>
             <input
               type="text"
@@ -67,7 +67,7 @@ const MainPage = () => {
               id="algoExample"
             />
             <label htmlFor="algoType">
-              <b>Algorithm Type</b>
+              <b>Type</b>
             </label>
             <input
               type="text"
@@ -86,16 +86,8 @@ const MainPage = () => {
         <a href="#close" className="background"></a>
       </div>
       <a className="btn btn-primary btn-large" href="#create">
-        Create a new flashcard
+        Create New Flashcard
       </a>
-      {/* <button
-        className="btn btn-primary btn-large"
-        href="#create"
-        type="button"
-        onClick={openForm}
-      >
-        Create a new flashcard
-      </button> */}
       <br />
       <br />
       <FlashcardContainer />

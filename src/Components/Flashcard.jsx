@@ -9,11 +9,11 @@ const Flashcard = (props) => {
         <button type="button" className="btn btn-primary btn-block btn-large" name={props.name} onClick={props.deleteCard}>X</button>
       </div>
       <div className="flashcard-info">
-        <h3>{props.algoCard.algoName}</h3>
+        <h3>{props.algoCard.algoname}</h3>
         <ul>
-          <li>Algo Prompt: {props.algoCard.algoPrompt}</li>
-          <li>Algo Example: {props.algoCard.algoExample}</li>
-          <li>Algo Type: {props.algoCard.algoType}</li>
+          <li>Algo Prompt: {props.algoCard.algoprompt}</li>
+          <li>Algo Example: {props.algoCard.algoex}</li>
+          <li>Algo Type: {props.algoCard.algotype}</li>
         </ul>
       </div>
     </div>
