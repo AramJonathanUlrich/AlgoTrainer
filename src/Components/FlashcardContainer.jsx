@@ -17,21 +17,22 @@ const FlashcardContainer = () => {
     const stateArray = algoCards;
     const removedElem = stateArray.splice(Number(id), 1);
     setAlgoCards(stateArray);
-    fetch('/delete/' + removedElem[0].algoName, {
+    fetch('/delete/' + removedElem[0].flashcardid, {
     method: "DELETE",
     })
-    .then((data) => console.log(data))
+    .then((data) => {})
     .catch((err) => console.log('there was an error: ', err));
   }
 
-  const updateCard = (e) => {
-    const id = e.target.name;
-    fetch('/update/' + algoCards[Number(id)].algoName, {
-    method: "PATCH",
-    })
-    .then((data) => console.log(data))
-    .catch((err) => console.log('there was an error: ', err));
-  }
+  
+  // const updateCard = (e) => {
+  //   const id = e.target.name;
+  //   fetch('/update/' + algoCards[Number(id)].algoName, {
+  //   method: "PATCH",
+  //   })
+  //   .then((data) => console.log(data))
+  //   .catch((err) => console.log('there was an error: ', err));
+  // }
 
   const flashcards = [];
   for (let i = 0; i < algoCards.length; i += 1) {
